@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Personal/Sophia/GameOver.unity
+    guid: 6bae31a6abfd64b4a86cdd9b6df52c8c
   m_configObjects: {}
