@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ChaserEnemyScript : MonoBehaviour
 {
-    private float speed;
+    public float speed;
 
+    int enemyHealth = 1;
+    int enemyDamage = 25;
     void Start()
     {
 
