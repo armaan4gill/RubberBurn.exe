@@ -1,86 +1,51 @@
-
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System.Net.Sockets;
-using UnityEngine.SceneManagement;
-
-/*
- * Gill, Armaan
- * Machus, Ryan
- * Last updated: 04/22/2024
- * This script moves the player and shoots using user input. As well as controls health, lives, and blink
- */
 
 public class PlayerController : MonoBehaviour
-    
 {
-
-    //A boolean value that will tell you if you are within .1 Unity Unit from the ground
     private bool is_grounded;
-    //The rigid body attached to the player
     private Rigidbody body;
-    //how close are we to a wall on our left side
     private float distance_to_wall_left = 2f;
-    //how close are we to a wall on our right side
     private float distance_to_wall_right = 2f;
-    //how close are we to a wall going forward
     private float distance_to_wall_forward = 2f;
-    //how close are we to a wall going backwards
     private float distance_to_wall_back = 2f;
 
-    //Start is a function that is called once when the object is Instatiated. 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         body = GetComponent<Rigidbody>();
-
     }
 
-    // Update is a function that is called once per frame
     void Update()
     {
-
+        // Tank movement
         float translation = Input.GetAxis("Vertical") * 10 * Time.deltaTime;
-        float straffe = Input.GetAxis("Horizontal") * 10 * Time.deltaTime;
+        float rotation = Input.GetAxis("Horizontal") * 100 * Time.deltaTime;
 
-        if (!is_grounded)
-            straffe /= 2;
+        // Tank rotation
+        transform.Rotate(0, rotation, 0);
 
-        if (!is_grounded)
-            translation /= 2;
-
-
-        //if I'm too close to a wall, don't go that direction anymore
-        if ((distance_to_wall_back <= .6 && translation < 0) || (distance_to_wall_forward <= .6 && translation > 0))
+        // Tank forward movement
+        if (translation > 0 && distance_to_wall_forward > 0.6f)
         {
-            translation = 0;
-        }
-        if ((distance_to_wall_right < .6 && straffe > 0) || (distance_to_wall_left < .6 && straffe < 0))
-        {
-            straffe = 0;
+            body.MovePosition(transform.position + transform.forward * translation);
         }
 
-        //Translate to move.
-        transform.Translate(straffe, 0, translation);
+        // Tank backward movement
+        if (translation < 0 && distance_to_wall_back > 0.6f)
+        {
+            body.MovePosition(transform.position + transform.forward * translation);
+        }
 
-
-
-
-        if (Input.GetKeyDown("escape"))
+        // Unlock cursor
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
         }
-
     }
 
     private void FixedUpdate()
     {
         DistanceToWall();
-        Vector3 oldRot = transform.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(0, oldRot.y, 0);
     }
 
     private void DistanceToWall()
@@ -91,7 +56,6 @@ public class PlayerController : MonoBehaviour
         Ray back_ray = new Ray(transform.position, -transform.forward);
         Ray right_ray = new Ray(transform.position, transform.right);
 
-        //Raycast left to see if I find a wall
         if (Physics.Raycast(left_ray, out hit) && !hit.collider.isTrigger)
         {
             distance_to_wall_left = hit.distance;
@@ -101,7 +65,6 @@ public class PlayerController : MonoBehaviour
             distance_to_wall_left = 3;
         }
 
-        //Raycast center forward to find a wall
         if (Physics.Raycast(front_ray, out hit) && !hit.collider.isTrigger)
         {
             distance_to_wall_forward = hit.distance;
@@ -111,7 +74,6 @@ public class PlayerController : MonoBehaviour
             distance_to_wall_forward = 3;
         }
 
-        //Raycast center forward to find a wall
         if (Physics.Raycast(back_ray, out hit) && !hit.collider.isTrigger)
         {
             distance_to_wall_back = hit.distance;
@@ -121,7 +83,6 @@ public class PlayerController : MonoBehaviour
             distance_to_wall_back = 3;
         }
 
-        //Raycast right to find a wall
         if (Physics.Raycast(right_ray, out hit) && !hit.collider.isTrigger)
         {
             distance_to_wall_right = hit.distance;
@@ -131,8 +92,6 @@ public class PlayerController : MonoBehaviour
             distance_to_wall_right = 3;
         }
 
-
-        //Raycast down to find the ground
         if (Physics.Raycast(transform.position, -transform.up, 1.1f))
         {
             is_grounded = true;
@@ -141,6 +100,5 @@ public class PlayerController : MonoBehaviour
         {
             is_grounded = false;
         }
-
     }
 }
