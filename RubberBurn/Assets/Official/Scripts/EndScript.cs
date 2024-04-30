@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+
+
+/// <summary>
+/// Quits the game
+/// </summary>
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+  public void QuitGame()
     {
-        
+        Application.Quit();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    /// <summary>
+    /// Changes the current scene to the scene with matching index
+    /// </summary>
+    /// <param name="sceneIndex">The index of the scene to switch to</param>
+    public void SwitchScene(int sceneIndex)
     {
-        
+        SceneManager.LoadScene(sceneIndex);
     }
 }
