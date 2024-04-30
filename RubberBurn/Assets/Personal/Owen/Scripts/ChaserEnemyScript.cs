@@ -6,6 +6,8 @@ public class ChaserEnemyScript : MonoBehaviour
 {
     Rigidbody rb;
     public float speed;
+    public Transform target;
+    public float withinRange;
 
     int enemyHealth = 1;
     int enemyDamage = 25;
@@ -15,10 +17,21 @@ public class ChaserEnemyScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
     void Update()
     {
-        rb.AddForce(speed, 0, 0, ForceMode.Acceleration);
-        print("adding force");
+        GapCloser();
+    }
+
+    private void GapCloser()
+    {
+        //get the distance between the player and enemy (this object)
+        float dist = Vector3.Distance(target.position, transform.position);
+
+        //check if it is within the range you set
+        if (dist <= withinRange)
+        {
+            //move to target(player) 
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+        }
     }
 }
