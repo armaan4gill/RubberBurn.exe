@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,43 +12,36 @@ public class PlayerController : MonoBehaviour
     private float distance_to_wall_forward = 2f;
     private float distance_to_wall_back = 2f;
 
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        body = GetComponent<Rigidbody>();
-    }
+    // Settings
+    public float MoveSpeed = 50;
+    public float MaxSpeed = 15;
+    public float Drag = 0.98f;
+    public float SteerAngle = 20;
+    public float Traction = 1;
 
+    // Variables
+    private Vector3 Force;
+
+    // Update is called once per frame
     void Update()
     {
-        // Tank movement
-        float translation = Input.GetAxis("Vertical") * 10 * Time.deltaTime;
-        float rotation = Input.GetAxis("Horizontal") * 100 * Time.deltaTime;
 
-        // Tank rotation
-        transform.Rotate(0, rotation, 0);
+        // Moving
+        Force += transform.forward * MoveSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
+        transform.position += Force * Time.deltaTime;
 
-        // Tank forward movement
-        if (translation > 0 && distance_to_wall_forward > 0.6f)
-        {
-            body.AddForce(transform.forward * translation * 75, ForceMode.Force);
-        }
+        // Steering
+        float steerInput = Input.GetAxis("Horizontal");
+        transform.Rotate(Vector3.up * steerInput * Force.magnitude * SteerAngle * Time.deltaTime);
 
-        // Tank backward movement
-        if (translation < 0 && distance_to_wall_back > 0.6f)
-        {
-            body.AddForce(transform.forward * translation * 40,ForceMode.Force);
-        }
+        // Drag and max speed limit
+        Force *= Drag;
+        Force = Vector3.ClampMagnitude(Force, MaxSpeed);
 
-        // Unlock cursor
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        DistanceToWall();
+        // Traction
+        Debug.DrawRay(transform.position, Force.normalized * 3);
+        Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
+        Force = Vector3.Lerp(Force.normalized, transform.forward, Traction * Time.deltaTime) * Force.magnitude;
     }
 
     private void DistanceToWall()
