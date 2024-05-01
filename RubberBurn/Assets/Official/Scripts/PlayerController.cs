@@ -27,13 +27,13 @@ public class PlayerController : MonoBehaviour
         // Tank forward movement
         if (translation > 0 && distance_to_wall_forward > 0.6f)
         {
-            body.AddForce(transform.forward * translation, ForceMode.Force);
+            body.AddForce(transform.forward * translation * 75, ForceMode.Force);
         }
 
         // Tank backward movement
         if (translation < 0 && distance_to_wall_back > 0.6f)
         {
-            body.AddForce(transform.forward * translation,ForceMode.Force);
+            body.AddForce(transform.forward * translation * 40,ForceMode.Force);
         }
 
         // Unlock cursor
