@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+        DistanceToWall();
      
     }
 
@@ -43,9 +44,19 @@ public class PlayerController : MonoBehaviour
         
             Force *= Drag;
         Force = Vector3.ClampMagnitude(Force, MaxSpeed);
+      
+     if(Input.GetKeyDown (KeyCode.Space))
+     {
+                Drag = Drag + 2;
+     }
+    if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Drag = 1f;
+        }
 
-        // Traction
-        Debug.DrawRay(transform.position, Force.normalized * 3);
+
+                // Traction
+                Debug.DrawRay(transform.position, Force.normalized * 3);
         Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
         Force = Vector3.Lerp(Force.normalized, transform.forward, Traction * Time.deltaTime) * Force.magnitude;
     }
