@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
      }
     if (Input.GetKeyUp(KeyCode.Space))
         {
-            Drag = 1f;
+            Drag = 0.992f;
         }
 
 
