@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //Raycast
     private bool is_grounded;
     private Rigidbody body;
     private float distance_to_wall_left = 2f;
@@ -22,10 +23,14 @@ public class PlayerController : MonoBehaviour
     // Variables
     private Vector3 Force;
 
-    // Update is called once per frame
     void Update()
     {
+        Move();
+     
+    }
 
+    public void Move()
+    {
         // Moving
         Force += transform.forward * MoveSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
         transform.position += Force * Time.deltaTime;
@@ -35,7 +40,8 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * steerInput * Force.magnitude * SteerAngle * Time.deltaTime);
 
         // Drag and max speed limit
-        Force *= Drag;
+        
+            Force *= Drag;
         Force = Vector3.ClampMagnitude(Force, MaxSpeed);
 
         // Traction
