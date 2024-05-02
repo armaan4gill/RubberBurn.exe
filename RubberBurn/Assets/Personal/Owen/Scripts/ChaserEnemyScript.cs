@@ -15,11 +15,22 @@ public class ChaserEnemyScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        // if no target specified, assume the player
+        if (target == null)
+        {
+
+            if (GameObject.FindWithTag("Player") != null)
+            {
+                target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+            }
+        }
     }
 
     void Update()
     {
         GapCloser();
+        transform.LookAt(target);
     }
 
     private void GapCloser()
@@ -34,4 +45,12 @@ public class ChaserEnemyScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
         }
     }
+    private void OnCollisionEnter(Collision collision)//handles the player taking damage
+    {
+        if (collision.gameObject.GetComponent<DamageController>() != null)
+        {
+            collision.gameObject.GetComponent<DamageController>().TakeDamage(enemyDamage);
+        }
+    }
+
 }
