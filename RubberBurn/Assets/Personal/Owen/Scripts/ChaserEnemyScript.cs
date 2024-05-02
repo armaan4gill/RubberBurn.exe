@@ -50,7 +50,14 @@ public class ChaserEnemyScript : MonoBehaviour
         if (collision.gameObject.GetComponent<DamageController>() != null)
         {
             collision.gameObject.GetComponent<DamageController>().TakeDamage(enemyDamage);
+            StartCoroutine(StopMovement());
         }
+    }
+    IEnumerator StopMovement()
+    {
+        speed = 0;
+        yield return new WaitForSeconds(3f);
+        speed = 0.03f;
     }
 
 }
