@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class NewBehaviourScript : MonoBehaviour
 {
-  public void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
     }

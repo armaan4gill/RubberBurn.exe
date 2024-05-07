@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Personal/Sophia/LevelSelect.unity
     guid: 28301a97d18e6a345b7be9c32f129e1c
+  - enabled: 1
+    path: Assets/Personal/Sophia/Controls.unity
+    guid: 8feb65975bcdde74ca66df9e28f81e3c
+  - enabled: 1
+    path: Assets/Personal/Sophia/Level1Maybe.unity
+    guid: 8e2364c6d2ff0da439e17ecde83b94a0
   m_configObjects: {}
