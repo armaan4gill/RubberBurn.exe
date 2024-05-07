@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float distance_to_wall_right = 2f;
     private float distance_to_wall_forward = 2f;
     private float distance_to_wall_back = 2f;
+    private Vector3 tempDrag;
 
     // Settings
     public float MoveSpeed = 50;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float Drag = 0.98f;
     public float SteerAngle = 20;
     public float Traction = 1;
+    public float lerpDrag = 1;
 
     // Variables
     private Vector3 Force;
@@ -44,19 +46,14 @@ public class PlayerController : MonoBehaviour
         
             Force *= Drag;
         Force = Vector3.ClampMagnitude(Force, MaxSpeed);
-      
-     if(Input.GetKeyDown (KeyCode.Space))
-     {
-                Drag = Drag + 2;
-     }
-    if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Drag = 0.992f;
-        }
 
+        //Drift using LERP
+        float targetDrag = Input.GetKey(KeyCode.Space) ? Drag + 2 : 0.992f; // Set target drag based on Space key
+        tempDrag = Vector3.Lerp(tempDrag, new Vector3(targetDrag, 0, 0), Time.deltaTime * lerpDrag); // Lerp temporary Vector3 with target drag value
+        Drag = tempDrag.x; // Extract the x component (assuming targetDrag only affects x)
 
-                // Traction
-                Debug.DrawRay(transform.position, Force.normalized * 3);
+        // Traction
+        Debug.DrawRay(transform.position, Force.normalized * 3);
         Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
         Force = Vector3.Lerp(Force.normalized, transform.forward, Traction * Time.deltaTime) * Force.magnitude;
     }
