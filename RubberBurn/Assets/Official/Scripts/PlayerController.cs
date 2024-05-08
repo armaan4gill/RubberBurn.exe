@@ -24,16 +24,19 @@ public class PlayerController : MonoBehaviour
 
     // Variables
     private Vector3 Force;
+    public GameObject stunIcon;
+    public bool stunned;
 
     void Update()
     {
         Move();
-       
-     
+
+
     }
 
     public void Move()
     {
+
         // Moving
         Force += transform.forward * MoveSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
         transform.position += Force * Time.deltaTime;
@@ -43,8 +46,8 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * steerInput * Force.magnitude * SteerAngle * Time.deltaTime);
 
         // Drag and max speed limit
-        
-            Force *= Drag;
+
+        Force *= Drag;
         Force = Vector3.ClampMagnitude(Force, MaxSpeed);
 
         //Drift using LERP
@@ -56,8 +59,40 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position, Force.normalized * 3);
         Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
         Force = Vector3.Lerp(Force.normalized, transform.forward, Traction * Time.deltaTime) * Force.magnitude;
+
+    }
+    public void StunOn()
+    {
+        stunIcon.gameObject.SetActive(true);
+        Invoke(nameof(StunOff), 0.5f);
+    }
+    public void StunOff()
+    {
+        stunIcon.gameObject.SetActive(false);
+        if (stunned) Invoke(nameof(StunOn), 0.5f);
     }
 
+    IEnumerator Stun()//handles stunned status
+    {
+        stunned = true;
+        StunOn();
+        float currentPlayerSpeed = 100;
+        float currentDrag = Drag;
+        MoveSpeed = 0;
+        Drag = 0;
+        yield return new WaitForSeconds(3);
+        MoveSpeed = currentPlayerSpeed;
+        Drag = currentDrag;
+        stunned = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Laser")//detects the laser colliding w/ player
+        {
+            StartCoroutine(Stun());
+        }
+    }
     private void DistanceToWall()
     {
         RaycastHit hit;
