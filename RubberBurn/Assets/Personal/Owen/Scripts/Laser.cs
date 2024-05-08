@@ -20,4 +20,8 @@ public class Laser : MonoBehaviour
             transform.position += speed * Vector3.right * Time.deltaTime;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+    }
 }
