@@ -276,23 +276,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3829072853193669842, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.308
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.68372536
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.18033218
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.68372536
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.18033218
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135045015702912599, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -29.551
+      objectReference: {fileID: 0}
     - target: {fileID: 8506993680284277014, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
       propertyPath: m_Name
       value: CyberTruck (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2155034072162412318, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1063992123}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
---- !u!4 &711928965 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2155034072162412318, guid: 3374eed92fb6b6f4c90d704e192318a3, type: 3}
-  m_PrefabInstance: {fileID: 711928964}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &860554569
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,8 +407,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860554569}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.24423888, y: 0.67319673, z: -0.24600926, w: -0.6531715}
-  m_LocalPosition: {x: -64.26694, y: 14.264999, z: 4.1243744}
+  m_LocalRotation: {x: -0.16396812, y: 0.69710886, z: -0.1680645, w: -0.67742753}
+  m_LocalPosition: {x: -64.26694, y: 11.474999, z: 4.457138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -572,14 +600,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063992121}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3466578, y: 0.014160005, z: -0.0012518464, w: -0.937884}
-  m_LocalPosition: {x: -0.05, y: 12.61, z: -3.067}
-  m_LocalScale: {x: 0.5525439, y: 0.67725295, z: 0.33854657}
+  m_LocalRotation: {x: -0.16396812, y: 0.69710886, z: -0.1680645, w: -0.67742753}
+  m_LocalPosition: {x: -64.26694, y: 11.474999, z: 4.457138}
+  m_LocalScale: {x: 1, y: 1.0202407, z: 0.98988295}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 937830243}
-  m_Father: {fileID: 711928965}
-  m_LocalEulerAnglesHint: {x: 40.563, y: 358.062, z: -0.563}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 27.16, y: 358.345, z: -0.058}
 --- !u!1 &1352533133
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +765,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 860554572}
   - {fileID: 1352533135}
+  - {fileID: 1063992123}
   - {fileID: 9626718}
   - {fileID: 2115987711}
   - {fileID: 711928964}

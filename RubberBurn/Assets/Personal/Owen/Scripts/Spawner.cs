@@ -19,9 +19,5 @@ public class Spawner : MonoBehaviour
     public void SpawnProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-        if (projectile.GetComponent<Laser>())
-        {
-            projectile.GetComponent<Laser>().goingLeft = goingLeft;
-        }
     }
 }
