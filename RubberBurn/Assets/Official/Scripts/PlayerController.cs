@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Armaan Gill
+ * 05/09/2024
+ * Script that will hold basic functions of controlling the drift car and also when hit by object
+ */
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,13 +24,15 @@ public class PlayerController : MonoBehaviour
     public float Drag = 0.98f;
     public float SteerAngle = 20;
     public float Traction = 1;
+    public bool stunned;
     public float lerpDrag = 1;
+    public GameObject stunIcon;
+    public LayerMask groundLayer;
 
     // Variables
     private Vector3 Force;
-    public GameObject stunIcon;
-    public bool stunned;
-
+    private Vector3 respawnPoint;
+    
     void Update()
     {
         Move();
@@ -60,6 +66,22 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
         Force = Vector3.Lerp(Force.normalized, transform.forward, Traction * Time.deltaTime) * Force.magnitude;
 
+    }
+    // Check if the player is grounded
+    private void CheckGround()
+    {
+        if (!Physics.Raycast(transform.position, -transform.up, 1.1f, groundLayer))
+        {
+            // Player is not grounded, respawn
+            Respawn();
+        }
+    }
+
+    // Respawn the player at the last known safe position
+    private void Respawn()
+    {
+        transform.position = respawnPoint;
+        // Reset velocity or any other necessary variables
     }
     public void StunOn()
     {
