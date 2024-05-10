@@ -19,7 +19,14 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(speed, 0, 0, ForceMode.Force);
+        if (isFacingLeft)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
