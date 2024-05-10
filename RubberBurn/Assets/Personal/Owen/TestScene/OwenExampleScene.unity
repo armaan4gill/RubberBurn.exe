@@ -236,10 +236,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2029480952125276385, guid: fea0193b714ae3746bfbdb91903a84cf, type: 3}
-      propertyPath: laserSpawn
-      value: 
-      objectReference: {fileID: 173983329}
     - target: {fileID: 3679035425981881917, guid: fea0193b714ae3746bfbdb91903a84cf, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -289,11 +285,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fea0193b714ae3746bfbdb91903a84cf, type: 3}
---- !u!4 &173983329 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8241154378893674107, guid: fea0193b714ae3746bfbdb91903a84cf, type: 3}
-  m_PrefabInstance: {fileID: 173983328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &711928964
 PrefabInstance:
   m_ObjectHideFlags: 0
