@@ -123,6 +123,7 @@ MonoBehaviour:
   timeBetweenShots: 5
   startDelay: 1
   projectilePrefab: {fileID: 8007515116039324018, guid: 32069924f8920e84fb38d35bdc82f6d7, type: 3}
+  laserSpawn: {fileID: 8241154378893674107}
 --- !u!1 &5059765920057707182
 GameObject:
   m_ObjectHideFlags: 0

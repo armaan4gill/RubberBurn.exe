@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Spawner : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Spawner : MonoBehaviour
     public float timeBetweenShots;
     public float startDelay;
     public GameObject projectilePrefab;
+    public Transform laserSpawn;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,6 @@ public class Spawner : MonoBehaviour
 
     public void SpawnProjectile()
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, laserSpawn.rotation);
     }
 }

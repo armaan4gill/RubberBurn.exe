@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Laser : MonoBehaviour
 {
@@ -18,14 +19,7 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFacingLeft)
-        {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
+        rb.AddForce(speed, 0, 0, ForceMode.Force);
     }
     private void OnTriggerEnter(Collider other)
     {
