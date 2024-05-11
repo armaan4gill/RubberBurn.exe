@@ -6,27 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Official/Scenes/UI/MainMenu.unity
+    path: Assets/Personal/Sophia/GameOver.unity
+    guid: 6bae31a6abfd64b4a86cdd9b6df52c8c
+  - enabled: 1
+    path: Assets/Personal/Sophia/MainMenu.unity
     guid: b7f2ced5940f472478714a28b02e5890
   - enabled: 1
-    path: Assets/Official/Scenes/UI/LevelSelect.unity
+    path: Assets/Official/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Personal/Sophia/LevelSelect.unity
     guid: 28301a97d18e6a345b7be9c32f129e1c
   - enabled: 1
-    path: Assets/Official/Scenes/Level1.unity
-    guid: 8e2364c6d2ff0da439e17ecde83b94a0
-  - enabled: 1
-    path: Assets/Official/Scenes/Level2.unity
-    guid: 52b0f0f720ff00d49bca2ce0867c4133
-  - enabled: 1
-    path: Assets/Official/Scenes/Level3.unity
-    guid: bff6b50daa03ca1409a2b397c0b9f920
-  - enabled: 1
-    path: Assets/Official/Scenes/UI/Controls.unity
+    path: Assets/Personal/Sophia/Controls.unity
     guid: 8feb65975bcdde74ca66df9e28f81e3c
   - enabled: 1
-    path: Assets/Official/Scenes/UI/RaceComplete.unity
-    guid: c9770610a6f64b640bea85c698dab670
-  - enabled: 1
-    path: Assets/Official/Scenes/UI/GameOver.unity
-    guid: 6bae31a6abfd64b4a86cdd9b6df52c8c
+    path: Assets/Personal/Sophia/Level1Maybe.unity
+    guid: 8e2364c6d2ff0da439e17ecde83b94a0
   m_configObjects: {}
