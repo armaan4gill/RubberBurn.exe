@@ -14,6 +14,7 @@ public class Laser : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(LifeTime());
     }
 
     // Update is called once per frame
