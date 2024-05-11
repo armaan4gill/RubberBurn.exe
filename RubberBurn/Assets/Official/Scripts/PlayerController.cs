@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        DistanceToWall();
+        
+        
 
     }
 
@@ -115,57 +116,5 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Stun());
         }
     }
-    private void DistanceToWall()
-    {
-        RaycastHit hit;
-        Ray left_ray = new Ray(transform.position, -transform.right);
-        Ray front_ray = new Ray(transform.position, transform.forward);
-        Ray back_ray = new Ray(transform.position, -transform.forward);
-        Ray right_ray = new Ray(transform.position, transform.right);
-
-        if (Physics.Raycast(left_ray, out hit) && !hit.collider.isTrigger)
-        {
-            distance_to_wall_left = hit.distance;
-        }
-        else
-        {
-            distance_to_wall_left = 3;
-        }
-
-        if (Physics.Raycast(front_ray, out hit) && !hit.collider.isTrigger)
-        {
-            distance_to_wall_forward = hit.distance;
-        }
-        else
-        {
-            distance_to_wall_forward = 3;
-        }
-
-        if (Physics.Raycast(back_ray, out hit) && !hit.collider.isTrigger)
-        {
-            distance_to_wall_back = hit.distance;
-        }
-        else
-        {
-            distance_to_wall_back = 3;
-        }
-
-        if (Physics.Raycast(right_ray, out hit) && !hit.collider.isTrigger)
-        {
-            distance_to_wall_right = hit.distance;
-        }
-        else
-        {
-            distance_to_wall_right = 3;
-        }
-
-        if (Physics.Raycast(transform.position, -transform.up, 1.1f))
-        {
-            is_grounded = true;
-        }
-        else
-        {
-            is_grounded = false;
-        }
-    }
+    
 }
