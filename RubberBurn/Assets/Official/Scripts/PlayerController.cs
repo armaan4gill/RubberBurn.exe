@@ -118,8 +118,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Finish")
         {
-            // Load the next scene by name 
-            SceneManager.LoadScene(6);
+            // Load the next scene by name (replace "NextScene" with your actual scene name)
+            SceneManager.LoadScene("NextScene");
         }
     }
     
