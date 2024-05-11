@@ -55,9 +55,9 @@ public class ChaserEnemyScript : MonoBehaviour
     }
     IEnumerator StopMovement()
     {
-        speed = 0;
-        yield return new WaitForSeconds(3f);
-        speed = 0.03f;
+        float Currentspeed = speed;
+        yield return new WaitForSeconds(1.5f);
+        speed = Currentspeed;
     }
 
 }
