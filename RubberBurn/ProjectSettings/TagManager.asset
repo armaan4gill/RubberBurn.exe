@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ChaserEnemy
+  - Laser
+  - Wall
   layers:
   - Default
   - TransparentFX
