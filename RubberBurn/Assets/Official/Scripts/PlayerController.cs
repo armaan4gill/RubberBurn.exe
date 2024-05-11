@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /*
  * Armaan Gill
  * 05/09/2024
@@ -114,6 +115,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Laser")//detects the laser colliding w/ player
         {
             StartCoroutine(Stun());
+        }
+        if (other.gameObject.tag == "Finish")
+        {
+            // Load the next scene by name (replace "NextScene" with your actual scene name)
+            SceneManager.LoadScene("NextScene");
         }
     }
     
